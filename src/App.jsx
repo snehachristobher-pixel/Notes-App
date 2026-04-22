@@ -8,20 +8,17 @@ import Navbar from "./components/Navbar";
 function App() {
   const [notes, setNotes] = useState([]);
 
-  // ✅ LOAD from localStorage (SAFE)
+  // ✅ LOAD from localStorage
   useEffect(() => {
     const data = localStorage.getItem("notes");
 
-    if (data && data !== "[]") {
+    if (data) {
       setNotes(JSON.parse(data));
     }
   }, []);
 
   // ✅ SAVE to localStorage (FIXED 🔥)
   useEffect(() => {
-    // 🚫 Prevent overwriting on initial empty render
-    if (notes.length === 0) return;
-
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
