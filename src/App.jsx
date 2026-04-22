@@ -8,18 +8,34 @@ import Navbar from "./components/Navbar";
 function App() {
   const [notes, setNotes] = useState([]);
 
-  // ✅ LOAD from localStorage
+  // ✅ LOAD from localStorage (SAFE 🔥)
   useEffect(() => {
-    const data = localStorage.getItem("notes");
+    try {
+      const data = localStorage.getItem("notes");
 
-    if (data) {
-      setNotes(JSON.parse(data));
+      if (data) {
+        const parsed = JSON.parse(data);
+
+        // ensure valid array
+        if (Array.isArray(parsed)) {
+          setNotes(parsed);
+        } else {
+          setNotes([]);
+        }
+      }
+    } catch (error) {
+      console.error("Error loading notes:", error);
+      setNotes([]);
     }
   }, []);
 
-  // ✅ SAVE to localStorage (FIXED 🔥)
+  // ✅ SAVE to localStorage (ALWAYS SAVE 🔥)
   useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
+    try {
+      localStorage.setItem("notes", JSON.stringify(notes));
+    } catch (error) {
+      console.error("Error saving notes:", error);
+    }
   }, [notes]);
 
   return (
