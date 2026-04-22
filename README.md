@@ -1,16 +1,48 @@
-# React + Vite
+# 📝 Notes App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Notes Management Application built using **React JS** that allows users to create, organize, and manage notes efficiently with tagging, filtering, and local storage persistence.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+##  Live Demo
 
-## React Compiler
+👉 https://projectnotesapp123.netlify.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Notes Management
+- Create notes with title and description
+- Edit and update notes
+- Delete notes (move to trash)
+- View notes in a clean card layout
+
+### Search & Filter
+- Search notes by title or description
+- Add tags to notes
+- Filter notes by tags
+
+###Organization
+- Pin important notes to top
+- Archive notes for later use
+- Trash section for deleted notes
+- Restore or permanently delete notes
+
+###  Data Persistence
+- Notes are stored in **localStorage**
+- Data remains even after page refresh
+
+---
+
+## Tech used
+
+- React JS
+-  Tailwind CSS
+-  React Router DOM
+-  localStorage
+
+---
+
+
+
