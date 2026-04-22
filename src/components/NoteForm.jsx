@@ -8,12 +8,14 @@ const NoteForm = ({ addNote }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // 🚫 Prevent empty note
     if (!title.trim() && !desc.trim()) return;
 
     const newNote = {
       id: Date.now(),
       title: title.trim(),
       desc: desc.trim(),
+
       tags: tags
         .split(",")
         .map((t) => t.trim())
@@ -23,8 +25,10 @@ const NoteForm = ({ addNote }) => {
       archived: false,
       trashed: false,
 
-      createdAt: Date.now(), // 🔥 IMPORTANT FIX
+      createdAt: Date.now(), // 🔥 required for sorting
     };
+
+    console.log("NEW NOTE CREATED:", newNote); // 🔍 DEBUG
 
     addNote(newNote);
 

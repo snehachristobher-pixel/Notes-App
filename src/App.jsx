@@ -6,36 +6,20 @@ import Trash from "./pages/Trash";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const [notes, setNotes] = useState([]);
-
-  // ✅ LOAD from localStorage (SAFE 🔥)
-  useEffect(() => {
+  // 🔥 LAZY LOAD (VERY IMPORTANT FIX)
+  const [notes, setNotes] = useState(() => {
     try {
       const data = localStorage.getItem("notes");
-
-      if (data) {
-        const parsed = JSON.parse(data);
-
-        // ensure valid array
-        if (Array.isArray(parsed)) {
-          setNotes(parsed);
-        } else {
-          setNotes([]);
-        }
-      }
-    } catch (error) {
-      console.error("Error loading notes:", error);
-      setNotes([]);
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
     }
-  }, []);
+  });
 
-  // ✅ SAVE to localStorage (ALWAYS SAVE 🔥)
+  // ✅ SAVE
   useEffect(() => {
-    try {
-      localStorage.setItem("notes", JSON.stringify(notes));
-    } catch (error) {
-      console.error("Error saving notes:", error);
-    }
+    console.log("💾 SAVING:", notes);
+    localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
   return (
